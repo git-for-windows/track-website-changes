@@ -1,0 +1,80 @@
+name: Track website changes
+
+on:
+  schedule:
+    - cron: "17 07 * * *"
+  workflow_dispatch:
+  push:
+
+jobs:
+  job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        site:
+          - label: less
+            url: http://www.greenwoodsoftware.com/less/index.html
+            title-match: /The current released version is (less-[0-9]+)\./
+            body-match: /== NEWS ITEM ==[^]*?\n(less-\d+) has been released for general use\.[^]*?The release notes are <a href="([^"]+)">here</
+            body-replacement: The release notes for ${match[1]} are [here](http://www.greenwoodsoftware.com/less/${match[2]}).
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: 'true'
+      - name: Check Last-Modified header
+        id: check
+        run: |
+          curl --head '${{matrix.site.url}}' >headers
+          mkdir -p .github/cached
+          last_modified="$(tr -d '\015' <headers | sed -n 's|^Last-Modified: ||p')"
+          echo "::set-output name=last-modified::$last_modified"
+          test "$last_modified" = "$(cat '.github/cached/${{matrix.site.label}}.last-modified' 2>/dev/null)" &&
+          echo '::set-output name=skip::true' ||
+          echo '::set-output name=skip::false'
+      - name: Download site contents
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          mkdir -p .github/cached
+          html='.github/cached/${{matrix.site.label}}.html'
+          curl -o "$html" '${{matrix.site.url}}'
+          printf '%s' '${{steps.check.outputs.last-modified}}' >"${html%.html}.last-modified"
+          git add "$html" "${html%.html}.last-modified"
+      - name: Extract issue title and body
+        if: steps.check.outputs.skip != 'true'
+        id: extract
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const path = '.github/cached/${{matrix.site.label}}.html'
+            const url = '${{matrix.site.url}}'
+            const title_match = ${{matrix.site.title-match}}
+            const title_replacement = '${{matrix.site.title-replacement}}'
+            const body_match = ${{matrix.site.body-match}}
+            const body_replacement = '${{matrix.site.body-replacement}}'
+
+            return await require('./extract-title-and-body.js')(path, url, title_match, title_replacement, body_match, body_replacement)
+      - name: Open an issue (maybe)
+        if: steps.check.outputs.skip != 'true'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const { title, body } = ${{steps.extract.outputs.result}}
+            const labels = 'site-update'
+
+            await require('./open-issue.js')(github, context, core, title, body, labels)
+      - name: Commit & push
+        if: steps.check.outputs.skip != 'true'
+        env:
+          GIT_CONFIG_PARAMETERS: "'user.name=CI' 'user.email=ci@github'"
+        run: |
+          git commit -m "${{matrix.site.label}}: update" &&
+          if test "$GITHUB_ACTOR" = nektos/act
+          then
+            echo "Would push commit:"
+            git -P show --stat
+          else
+            git push origin HEAD </dev/null
+          fi
