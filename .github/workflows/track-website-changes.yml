@@ -86,7 +86,7 @@ jobs:
               for i in 1 2 3 4 5
               do
                 # In case of concurrent pushes, let's pull and push
-                git pull origin $GITHUB_REF </dev/null || exit 1
+                git -c pull.rebase=false pull origin $GITHUB_REF </dev/null || exit 1
                 git push origin HEAD </dev/null && exit 0
               done
               exit 1
