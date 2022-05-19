@@ -17,12 +17,6 @@ jobs:
             title-match: /The current released version is (less-[0-9]+)\./
             body-match: /== NEWS ITEM ==[^]*?\n(less-\d+) has been released for general use\.[^]*?The release notes are <a href="([^"]+)">here</
             body-replacement: The release notes for ${match[1]} are [here](http://www.greenwoodsoftware.com/less/${match[2]}).
-          - label: pcre2
-            url: https://pcre.org/
-            title-match: /The\s+current\s+version,\s+PCRE2[^]*? version <b>([0-9.]+)</
-            title-replacement: PCRE2 ${match[1]}
-            body-match: /<a href="([^"]+)">NEWS<\/a> and <a href="([^"]+)">ChangeLog<\/a>/
-            body-replacement: See [NEWS](${url}${match[1]}) and [ChangeLog](${url}${match[2]}).
       fail-fast: false
     steps:
       - uses: actions/checkout@v2
