@@ -46,7 +46,7 @@
   <p>There are two major versions of the PCRE library. The current
    version, PCRE2,
    <a href="https://lists.exim.org/lurker/message/20150105.162835.0666407a.en.html">released in 2015,</a>
-   is now at version <b>10.37</b>.</p>
+   is now at version <b>10.39</b>.</p>
 
   <p>The older, but still widely deployed PCRE library, originally
    released in 1997, is at version <b>8.45</b>. This version of PCRE is
@@ -76,30 +76,21 @@
 
   <blockquote><code>git clone https://github.com/PhilipHazel/pcre2.git</code></blockquote>
 
+  <p>Note that the former <tt>ftp.pcre.org</tt> FTP site is no longer
+    available. You will need to update any scripts that download PCRE source
+    code to download via HTTPS, Git, or Subversion from the new home on
+    GitHub instead.</p>
+
   <h3>Contributed Ports</h3>
 
-  <p>A precompiled Windows port of PCRE, which may be a few versions behind,
-   is available courtesy the
-   <a href="http://gnuwin32.sourceforge.net/">GnuWin32</a> project.</p>
-
-  <ul>
-   <li><a href="http://gnuwin32.sourceforge.net/packages/pcre.htm">http://gnuwin32.sourceforge.net/packages/pcre.htm</a></li>
-  </ul>
-
   <p>If you just need the command-line PCRE or PCRE2 tools on Windows,
-   more up to date precompiled binary versions are available here:</p>
-
-  <ul>
-   <li><a href="http://www.rexegg.com/pcregrep-pcretest.html">http://www.rexegg.com/pcregrep-pcretest.html</a></li>
-  </ul>
+   precompiled binary versions are available at this
+   <a href="http://www.rexegg.com/pcregrep-pcretest.html">Rexegg page</a>.</p>
 
   <p>A PCRE2 port for z/OS, a mainframe operating system which uses
-   EBCDIC as its default character encoding, can be found here:</p>
-
-  <ul>
-   <li><a href="http://www.cbttape.org/">http://www.cbttape.org/</a>
-    <a href="http://www.cbttape.org/ftp/cbt/CBT939.zip">(File 939)</a></li>
-  </ul>
+   EBCDIC as its default character encoding, can be found at
+   <a href="http://www.cbttape.org/">http://www.cbttape.org/</a>
+   <a href="http://www.cbttape.org/ftp/cbt/CBT939.zip">(File 939)</a>.</p>
 
 
   <h2>Documentation</h2>
@@ -128,7 +119,7 @@
    expression semantics, can also be found in the community authored
    <a href="https://en.wikipedia.org/wiki/PCRE">Wikipedia entry on PCRE</a>.</p>
 
-  <p>You can find a curated summary of changes with each PCRE release,
+  <p>There is a curated summary of changes with each PCRE release,
    copies of documentation from older releases, and other useful
    information from the third party authored
    <a href="http://www.rexegg.com/pcre-documentation.html">RexEgg
