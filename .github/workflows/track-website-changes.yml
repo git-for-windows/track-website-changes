@@ -18,12 +18,14 @@ jobs:
         site:
           - label: less
             url: http://www.greenwoodsoftware.com/less/index.html
-            title-match: /The current released version is (less-[0-9]+)\./
+            title-match: /The current released version is less-([0-9]+)\./
+            title-replacement: '[New less version] ${match[1]}'
             body-match: /== NEWS ITEM ==[^]*?\n(less-\d+) has been released for general use\.[^]*?The release notes are <a href="([^"]+)">here</
             body-replacement: The release notes for ${match[1]} are [here](http://www.greenwoodsoftware.com/less/${match[2]}).
           - label: gnupg
             url: https://gnupg.org/index.html
-            title-match: /<h3[^>]*>(GnuPG [1-9][0-9.]*) released/
+            title-match: /<h3[^>]*>GnuPG ([1-9][0-9.]*) released/
+            title-replacement: '[New gnupg version] ${match[1]}'
             body-match: /<h3[^>]*>GnuPG ([1-9][0-9.]*) released[^]*?{<a href="([^"]+)">more<\/a>}/
             body-replacement: The release notes for ${match[1]} are [here](${match[2]}).
       fail-fast: false
@@ -71,7 +73,7 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const { title, body } = ${{steps.extract.outputs.result}}
-            const labels = 'site-update'
+            const labels = 'component-update'
 
             await require('./open-issue.js')(github, context, core, title, body, labels)
       - name: Commit & push
