@@ -1,5 +1,5 @@
 module.exports = async (github, context, core, title, body, labels) => {
-  const { data: issues } = await github.issues.listForRepo({
+  const { data: issues } = await github.rest.issues.listForRepo({
       owner: context.repo.owner,
       repo: context.repo.repo,
       state: 'all',
@@ -14,7 +14,7 @@ module.exports = async (github, context, core, title, body, labels) => {
   if (process.env.GITHUB_ACTOR === 'nektos/act') {
     core.info(`Would create issue '${title}' with content '${body}'`)
   } else {
-    await github.issues.create({
+    await github.rest.issues.create({
       owner: context.repo.owner,
       repo: context.repo.repo,
       title: title,
