@@ -5,7 +5,7 @@
 <head>
 <title>The GNU Privacy Guard</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="DC.Date" content="2022-11-15" />
+<meta name="DC.Date" content="2022-12-20" />
 <meta name="DC.Language" content="en" />
 <meta name="DC.Title" content="The GNU Privacy Guard" />
 <meta name="DC.Description"
@@ -126,14 +126,14 @@ distributed under the terms of the <a href="https://www.gnu.org/copyleft/gpl.htm
 </p>
 
 <p>
-The current version of GnuPG is 2.2.41.  See the <a href="download/index.html">download</a>
+The current version of GnuPG is 2.4.0.  See the <a href="download/index.html">download</a>
 page for other maintained versions.
 </p>
 
 <p>
 <a href="https://www.gpg4win.org">Gpg4win</a> is a Windows version of GnuPG featuring a context menu tool, a
 crypto manager, and an Outlook plugin to send and receive standard
-PGP/MIME mails.  The current version of Gpg4win is 4.0.4.
+PGP/MIME mails.  The current version of Gpg4win is 4.1.0.
 </p>
 </div>
 
@@ -184,8 +184,35 @@ The latest release news:<br  />
 </p>
 </div>
 
-<h3 id="sec-3-1">GnuPG / Libksba security advisory (2022-10-17)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="important">important</span></span></h3>
+<h3 id="sec-3-1">25 Years of GnuPG (2017-12-20)</h3>
 <div class="outline-text-3" id="text-3-1">
+<p>
+Exactly 25 years ago the very first release of GnuPG was published.
+We are pleased to take this opportunity to announce the availability
+of GnuPG version 2.4.0.
+</p>
+
+<p>
+This release has a few new features and the binary releases come with
+an updated Libksba to fix another vulnerability related to
+CVE-2022-3515.  {<a href="https://lists.gnupg.org/pipermail/gnupg-announce/2022q4/000477.html">more</a>}
+</p>
+</div>
+
+
+<h3 id="sec-3-2">Libksba security advisory update (2022-12-20)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="important">important</span></span></h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Another bug has been found in <a href="https://gnupg.org/software/libksba/">Libksba</a> which affects all versions of
+libksba before 1.6.3.  Our <a href="https://gnupg.org/blog/20221017-pepe-left-the-ksba.html">security advisory</a> for <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3512">CVE-2022-3512</a>
+has been updated accordingly.  Windows users should update
+to <a href="https://files.gpg4win.org/gpg4win-4.1.0.exe">Gpg4win 4.1.0</a> or to GnuPG&nbsp;VS-Desktop 3.1.26.
+</p>
+</div>
+
+
+<h3 id="sec-3-3">GnuPG / Libksba security advisory (2022-10-17)&#xa0;&#xa0;&#xa0;<span class="tag"><span class="important">important</span></span></h3>
+<div class="outline-text-3" id="text-3-3">
 <p>
 A severe bug has been found in <a href="https://gnupg.org/software/libksba/">Libksba</a>, the library used by GnuPG for
 parsing the ASN.1 structures as used by S/MIME.  The bug affects all
@@ -200,8 +227,9 @@ update to <a href="https://files.gpg4win.org/gpg4win-4.0.4.exe">Gpg4win 4.0.4</a
 </p>
 </div>
 
-<h3 id="sec-3-2">GnuPG 2.3.8 released (2022-10-13)</h3>
-<div class="outline-text-3" id="text-3-2">
+
+<h3 id="sec-3-4">GnuPG 2.3.8 released (2022-10-13)</h3>
+<div class="outline-text-3" id="text-3-4">
 <p>
 We are pleased to announce the availability of a new stable GnuPG
 release: version 2.3.8.  This release comes with a lot of new features
@@ -210,8 +238,8 @@ vulnerability <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-3
 </p>
 </div>
 
-<h3 id="sec-3-3">GnuPG 2.3.7 released (2022-07-11)</h3>
-<div class="outline-text-3" id="text-3-3">
+<h3 id="sec-3-5">GnuPG 2.3.7 released (2022-07-11)</h3>
+<div class="outline-text-3" id="text-3-5">
 <p>
 We are pleased to announce the availability of a new stable GnuPG
 release: version 2.3.7.  This release fixes <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-34903">CVE-2022-34903</a> which could
@@ -221,8 +249,8 @@ Kleopatra and other users of GPGME.  {<a href="https://lists.gnupg.org/pipermail
 </p>
 </div>
 
-<h3 id="sec-3-4">GnuPG 2.3.6 released (2022-04-25)</h3>
-<div class="outline-text-3" id="text-3-4">
+<h3 id="sec-3-6">GnuPG 2.3.6 released (2022-04-25)</h3>
+<div class="outline-text-3" id="text-3-6">
 <p>
 We are pleased to announce the availability of a new stable GnuPG
 release: version 2.3.6. This release fixes a regression introduced in
@@ -230,8 +258,8 @@ release: version 2.3.6. This release fixes a regression introduced in
 </p>
 </div>
 
-<h3 id="sec-3-5">GnuPG 2.3.5 released (2022-04-21)</h3>
-<div class="outline-text-3" id="text-3-5">
+<h3 id="sec-3-7">GnuPG 2.3.5 released (2022-04-21)</h3>
+<div class="outline-text-3" id="text-3-7">
 <p>
 We are pleased to announce the availability of a new <b>stable GnuPG</b>
 release: version 2.3.5. This is another release in the stable 2.3
@@ -240,8 +268,8 @@ fixes some bugs. {<a href="https://lists.gnupg.org/pipermail/gnupg-announce/2022
 </p>
 </div>
 
-<h3 id="sec-3-6">Libgcrypt 1.10 is the new stable branch (2022-03-28)</h3>
-<div class="outline-text-3" id="text-3-6">
+<h3 id="sec-3-8">Libgcrypt 1.10 is the new stable branch (2022-03-28)</h3>
+<div class="outline-text-3" id="text-3-8">
 <p>
 Although we will keep on maintaining the 1.8 branch, the new stable
 branch is now 1.10.  Version 1.10.1 comes with a lot of performance
@@ -287,7 +315,7 @@ ABI compatibility to previous versions.  {<a href="https://lists.gnupg.org/piper
     <a rel="license" href="https://creativecommons.org/licenses/by-sa/3.0/"
     >Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.  See
     <a href="/copying.html">copying</a> for details.
-    Page <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=web/index.org">source</a> last changed on 2022-11-15.
+    Page <a href="https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg-doc.git;a=blob;f=web/index.org">source</a> last changed on 2022-12-20.
   </div>
 </div>
 </div><!-- end wrapper -->
