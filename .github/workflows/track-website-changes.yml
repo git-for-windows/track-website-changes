@@ -54,7 +54,7 @@ jobs:
       - name: Extract issue title and body
         if: steps.check.outputs.skip != 'true'
         id: extract
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -68,7 +68,7 @@ jobs:
             return await require('./extract-title-and-body.js')(path, url, title_match, title_replacement, body_match, body_replacement)
       - name: Open an issue (maybe)
         if: steps.check.outputs.skip != 'true'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
