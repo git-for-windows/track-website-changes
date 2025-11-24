@@ -30,7 +30,7 @@ jobs:
             body-replacement: The release notes for ${match[1]} are [here](${match[2]}).
       fail-fast: false
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           persist-credentials: 'true'
       - name: Check Last-Modified header
