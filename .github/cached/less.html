@@ -45,13 +45,13 @@ The current released version is less-692.
 It was released for general use on 8&nbsp;Feb 2026.
 </P>
 <P>
-The current beta version is less-696.
-It was released for beta testing on 5&nbsp;Apr 2026.
+The current beta version is less-700.
+It was released for beta testing on 30&nbsp;Apr 2026.
 </P>
 
 <UL>
 <LI> <A HREF="news.692.html">Information about less-692</A>
-<LI> <A HREF="news.696.html">Information about less-696</A>
+<LI> <A HREF="news.700.html">Information about less-700</A>
 <LI><A HREF="old.html">Information about older versions</A>
 </UL>
 
@@ -61,6 +61,33 @@ It was released for beta testing on 5&nbsp;Apr 2026.
 <h2>News</h2>
 
 <TABLE CELLPADDING="7">
+
+<!-- ======== NEWS ITEM ======== -->
+<tr valign="top"><td>
+<B>30&nbsp;Apr 2026</B>
+</td><td>
+<font size="+1">
+less-700 has been released for beta testing.
+</font>
+<br>
+You can download it <a href="download.html">here</a>.
+<br>
+The release notes are <a href="news.700.html">here</a>.
+<br>
+      This release fixes some issues found in less-696 (
+<a href="https://github.com/gwsw/less/issues/754">github #754</a>,
+<a href="https://github.com/gwsw/less/issues/757">github #757</a>,
+<a href="https://github.com/gwsw/less/issues/759">github #759</a>,
+<a href="https://github.com/gwsw/less/issues/760">github #760</a>, and
+<a href="https://github.com/gwsw/less/issues/761">github #761</a>).
+      <br> &nbsp; <br>
+      Also, the mechanism to create handlers for OSC 8 hyperlinks has
+      been changed.
+      Instead of using an environment variable named <code>LESS_OSC8_xxx</code>,
+      you should use <code>LESS_OSC8_OPEN_xxx</code>. <code>LESS_OSC8_xxx</code> is no longer
+      supported, and the semantics of <code>LESS_OSC8_OPEN_xxx</code> are different 
+      than those of <code>LESS_OSC8_xxx</code>. See the man page for details.
+</td></tr>
 
 <!-- ======== NEWS ITEM ======== -->
 <tr valign="top"><td>
